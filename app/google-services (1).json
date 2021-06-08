@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "264401562849",
+    "firebase_url": "https://vivu-firebase-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "vivu-firebase",
+    "storage_bucket": "vivu-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264401562849:android:ae96ee1f375cfc7ded5ba0",
+        "android_client_info": {
+          "package_name": "com.example.vivu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264401562849-03agq5fqd769a895nnthkqo6lspmdpf6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2Qhwrnwout5e8dffVMgtPntBxEShoKvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264401562849-03agq5fqd769a895nnthkqo6lspmdpf6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
