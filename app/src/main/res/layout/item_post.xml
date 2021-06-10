@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imvAvatarPost"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/images"
+            app:shapeAppearance="@drawable/post" />
+
+        <TextView
+            android:id="@+id/tvNameAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:text="Le Luong"
+            android:textSize="20dp" />
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:text="Đăng bài "
+            android:gravity="center"
+            android:layout_marginLeft="140dp"
+            android:layout_gravity="center"
+            android:id="@+id/btnPost"
+            android:textColor="#3F51B5"/>
+
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:inputType="text|textMultiLine"
+        android:gravity="top"
+        android:hint="Bài viết của bạn ..."
+        android:id="@+id/edtDetailPost"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnUploadImage"
+        android:text="Tải ảnh lên"
+        android:textColor="@color/white"
+        android:background="@color/purple_700"
+        android:layout_margin="20dp"/>
+
+
+
+
+
+</LinearLayout>

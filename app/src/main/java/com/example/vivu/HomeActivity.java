@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         mapping();
         mNavigationView.setOnNavigationItemSelectedListener(listener);
+        mNavigationView.setSelectedItemId(R.id.itemPage);
 
     }
 
@@ -33,19 +34,17 @@ public class HomeActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
 
             Fragment mFragmentSelected = null;
+
             switch (item.getItemId()) {
                 case R.id.itemPage:
                     mFragmentSelected = new HomeFragment();
                     break;
-
                 case R.id.itemDiscover:
                     mFragmentSelected = new DiscoverFragment();
                     break;
-
                 case R.id.itemMessage:
                     mFragmentSelected = new MessageFragment();
                     break;
-
                 case R.id.itemAccount:
                     mFragmentSelected = new AccountFragment();
                     break;

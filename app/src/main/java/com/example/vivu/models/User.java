@@ -7,13 +7,24 @@ public class User {
     private String emailUser;
     private String numberPhoneUser;
     private String passwordUser;
-    private List<Posts>postsList;
+    private Post postUser;
+
+    public User() {
+    }
 
     public User(String userName, String emailUser, String numberPhoneUser, String passwordUser) {
         this.userName = userName;
         this.emailUser = emailUser;
         this.numberPhoneUser = numberPhoneUser;
         this.passwordUser = passwordUser;
+    }
+
+    public User(String userName, String emailUser, String numberPhoneUser, String passwordUser, Post postUser) {
+        this.userName = userName;
+        this.emailUser = emailUser;
+        this.numberPhoneUser = numberPhoneUser;
+        this.passwordUser = passwordUser;
+        this.postUser = postUser;
     }
 
     public String getUserName() {
@@ -48,11 +59,11 @@ public class User {
         this.passwordUser = passwordUser;
     }
 
-    public List<Posts> getPostsList() {
-        return postsList;
+    public Post getPostUser() {
+        return postUser;
     }
 
-    public void setPostsList(List<Posts> postsList) {
-        this.postsList = postsList;
+    public void setPostUser(Post postUser) {
+        this.postUser = postUser;
     }
 }
