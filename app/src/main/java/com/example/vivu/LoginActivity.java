@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,23 +54,36 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean checkLogin() {
+
         String numberPhone = mEditTextNumberPhone.getText().toString();
         String passWord = mEditTextPassWord.getText().toString();
+
         User mUser = null;
+
         if (numberPhone.isEmpty()) {
             mLayoutNumberPhone.setError("Số điện thoại của bạn là gì ?");
             return false;
         }
         mLayoutNumberPhone.setErrorEnabled(false);
+        Log.e("", "SIZE " + userList.size());
+
+        int temp = 0;
         for (User user : userList) {
-            if (!numberPhone.trim().equals(user.getNumberPhoneUser())) {
-                Log.e("NUMBER",""+user.getNumberPhoneUser());
-                mLayoutNumberPhone.setError("Số điện thoại của bạn không đúng ");
-                return false;
-            } else {
+            if (numberPhone.trim().equals(user.getNumberPhoneUser().trim())) {
                 mUser = user;
+                Log.e("DONE", "" + mUser.getNumberPhoneUser() + "--" + numberPhone);
+                temp++;
+                break;
+
             }
         }
+        if (temp == 0){
+            mLayoutNumberPhone.setError("Số điện thoại bạn chưa đăng kí");
+            return false;
+        }else{
+            mLayoutNumberPhone.setEnabled(false);
+        }
+
         mLayoutNumberPhone.setErrorEnabled(false);
         if (passWord.isEmpty()) {
             mLayoutPassword.setError("Bạn phải nhật mật khẩu");
@@ -84,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
 
         return true;
     }
+
 
     private void getData() {
 
