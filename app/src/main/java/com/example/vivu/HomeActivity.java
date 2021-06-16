@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView mNavigationView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +25,12 @@ public class HomeActivity extends AppCompatActivity {
         mapping();
         mNavigationView.setOnNavigationItemSelectedListener(listener);
         mNavigationView.setSelectedItemId(R.id.itemPage);
+
+
+
+
+
+        
 
     }
 
@@ -57,7 +62,6 @@ public class HomeActivity extends AppCompatActivity {
     };
 
     private void mapping() {
-
         mNavigationView = findViewById(R.id.nvgHome);
 
     }

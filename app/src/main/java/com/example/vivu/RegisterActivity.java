@@ -34,7 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
             mTextPassWord, mTextPassWordConfirm;
     private TextInputLayout mLayoutUser, mLayoutEmail, mLayoutPhone,
             mLayoutPassword, mLayoutPasswordConfirm;
-
     private AppCompatButton mButtonRegister;
     private DatabaseReference mDatabase;
     private List<User> mUserList = new ArrayList<>();
@@ -63,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (checkUserName(userName) && validatePhone(numberPhone)
                 && validateEmail(emailUser) &&
                 checkPassword(password, passwordConfirm)) {
-            User user = new User(userName, emailUser, numberPhone, passwordConfirm);
+            User user = new User(userName, emailUser, numberPhone, passwordConfirm,"");
             insertUser(user);
         }
     }

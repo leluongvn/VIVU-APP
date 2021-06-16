@@ -5,16 +5,39 @@ import java.util.List;
 public class Post {
 
     String detailPost;
-    String Images;
-    List<Comment> commentList;
+    String ownerPost;
+    String emailOwnerPost;
 
-    public Post(String detailPost, String images) {
+    String imagePost;
+    String imageUserPost;
 
-        this.detailPost = detailPost;
-        Images = images;
-
+    public Post() {
     }
 
+
+    public Post(String detailPost, String ownerPost, String emailOwnerPost, String imagePost, String imageUserPost) {
+        this.detailPost = detailPost;
+        this.ownerPost = ownerPost;
+        this.emailOwnerPost = emailOwnerPost;
+        this.imagePost = imagePost;
+        this.imageUserPost = imageUserPost;
+    }
+
+    public String getImagePost() {
+        return imagePost;
+    }
+
+    public void setImagePost(String imagePost) {
+        this.imagePost = imagePost;
+    }
+
+    public String getImageUserPost() {
+        return imageUserPost;
+    }
+
+    public void setImageUserPost(String imageUserPost) {
+        this.imageUserPost = imageUserPost;
+    }
 
     public String getDetailPost() {
         return detailPost;
@@ -24,19 +47,20 @@ public class Post {
         this.detailPost = detailPost;
     }
 
-    public String getImages() {
-        return Images;
+    public String getOwnerPost() {
+        return ownerPost;
     }
 
-    public void setImages(String images) {
-        Images = images;
+    public void setOwnerPost(String ownerPost) {
+        this.ownerPost = ownerPost;
     }
 
-    public List<Comment> getCommentList() {
-        return commentList;
+    public String getEmailOwnerPost() {
+        return emailOwnerPost;
     }
 
-    public void setCommentList(List<Comment> commentList) {
-        this.commentList = commentList;
+    public void setEmailOwnerPost(String emailOwnerPost) {
+        this.emailOwnerPost = emailOwnerPost;
     }
+
 }

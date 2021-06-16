@@ -8,23 +8,25 @@ public class User {
     private String numberPhoneUser;
     private String passwordUser;
     private Post postUser;
+    private String imageUser;
+
+    public String getImageUser() {
+        return imageUser;
+    }
+
+    public void setImageUser(String imageUser) {
+        this.imageUser = imageUser;
+    }
 
     public User() {
     }
 
-    public User(String userName, String emailUser, String numberPhoneUser, String passwordUser) {
+    public User(String userName, String emailUser, String numberPhoneUser, String passwordUser, String imageUser) {
         this.userName = userName;
         this.emailUser = emailUser;
         this.numberPhoneUser = numberPhoneUser;
         this.passwordUser = passwordUser;
-    }
-
-    public User(String userName, String emailUser, String numberPhoneUser, String passwordUser, Post postUser) {
-        this.userName = userName;
-        this.emailUser = emailUser;
-        this.numberPhoneUser = numberPhoneUser;
-        this.passwordUser = passwordUser;
-        this.postUser = postUser;
+        this.imageUser = imageUser;
     }
 
     public String getUserName() {

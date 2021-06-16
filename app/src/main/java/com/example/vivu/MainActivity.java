@@ -1,6 +1,8 @@
 package com.example.vivu;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -83,8 +85,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void mapping() {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("login", Context.MODE_PRIVATE);
 
-
+            String name = preferences.getString("name",null);
+            if (name !=null){
+                Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+                startActivity(intent);
+            }
         mButtonLogin = findViewById(R.id.btnLogin);
         mButtonRegister = findViewById(R.id.btnRegisterMain);
     }

@@ -1,7 +1,10 @@
 package com.example.vivu;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Process;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -34,10 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         mapping();
         getData();
-
         mButtonLogin = findViewById(R.id.btnLoginHome);
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,8 +48,6 @@ public class LoginActivity extends AppCompatActivity {
                             HomeActivity.class);
                     startActivity(intent);
                 }
-
-
             }
         });
     }
@@ -65,22 +64,20 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
         mLayoutNumberPhone.setErrorEnabled(false);
-        Log.e("", "SIZE " + userList.size());
 
         int temp = 0;
         for (User user : userList) {
             if (numberPhone.trim().equals(user.getNumberPhoneUser().trim())) {
                 mUser = user;
-                Log.e("DONE", "" + mUser.getNumberPhoneUser() + "--" + numberPhone);
                 temp++;
                 break;
 
             }
         }
-        if (temp == 0){
+        if (temp == 0) {
             mLayoutNumberPhone.setError("Số điện thoại bạn chưa đăng kí");
             return false;
-        }else{
+        } else {
             mLayoutNumberPhone.setEnabled(false);
         }
 
@@ -95,6 +92,13 @@ public class LoginActivity extends AppCompatActivity {
             mLayoutPassword.setError("Bạn nhập sai mật khẩu");
             return false;
         }
+        SharedPreferences preferences = LoginActivity.this.getSharedPreferences("login", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("name", mUser.getUserName());
+        editor.putString("email", mUser.getEmailUser());
+        editor.putString("image",mUser.getImageUser());
+        editor.commit();
+
 
         return true;
     }
@@ -103,7 +107,6 @@ public class LoginActivity extends AppCompatActivity {
     private void getData() {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users");
-
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -111,12 +114,11 @@ public class LoginActivity extends AppCompatActivity {
                     User user = snapshot1.getValue(User.class);
                     userList.add(user);
                 }
-                Log.e("SIZE", "" + userList.size());
             }
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
+                Log.e("ERROR-GET DATA", " " + error);
             }
         });
 
@@ -127,5 +129,7 @@ public class LoginActivity extends AppCompatActivity {
         mLayoutPassword = findViewById(R.id.tipPasswordLogin);
         mEditTextNumberPhone = findViewById(R.id.edtNumberPhoneLogin);
         mEditTextPassWord = findViewById(R.id.edtPasswordLogin);
+
+
     }
 }

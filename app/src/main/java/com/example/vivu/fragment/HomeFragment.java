@@ -1,6 +1,7 @@
 package com.example.vivu.fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,6 +49,11 @@ public class HomeFragment extends Fragment {
 
         mAdapterTendencyHome = new AdapterTendencyHome(getContext(), tendencyList);
         setAdapterTendency(mAdapterTendencyHome, mRecyclerViewTendency);
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("login",Context.MODE_PRIVATE);
+        String temp =preferences.getString("name","lol");
+        Log.e("Shared"," "+temp);
+
 
         return view;
 

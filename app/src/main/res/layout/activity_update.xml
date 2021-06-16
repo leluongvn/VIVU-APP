@@ -8,22 +8,30 @@
     android:orientation="vertical"
     tools:context=".RegisterActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="60dp"
-        android:gravity="center"
-        android:text="Đăng kí "
-        android:textColor="@color/white"
-        android:textSize="40dp" />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/imvAvatarUpdate"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/account"
+        app:shapeAppearance="@style/avatar"/>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="-45dp"
+        android:layout_marginLeft="230dp"
+        android:src="@drawable/ic_baseline_collections_24"
+        app:shapeAppearance="@style/avatar"
+        android:id="@+id/imvUploadAvatar"/>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tipUserNameRegisterLO"
+        android:id="@+id/tipUserNameUpdate"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:hint="Tên người dùng"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
@@ -32,29 +40,28 @@
         app:errorEnabled="false"
         app:counterMaxLength="15"
         app:endIconMode="clear_text">
-
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tipUserNameRegister"
+            android:id="@+id/edtUserNameUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"></com.google.android.material.textfield.TextInputEditText>
+            android:textColor="@color/white"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tipNumberPhoneRegisterLO"
+        android:id="@+id/tipNumberPhoneUpdate"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:hint="Số điện thoại"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
         app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tipNumberPhoneRegister"
+            android:id="@+id/edtNumberPhoneUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
@@ -62,7 +69,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tipEmailRegisterLO"
+        android:id="@+id/tipEmailUpdate"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,7 +80,7 @@
         app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tipEmailRegister"
+            android:id="@+id/edtEmailUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -82,7 +89,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tipPassWordRegisterLO"
+        android:id="@+id/tipPassWordUpdate"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,14 +100,14 @@
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tipPassWordRegister"
+            android:id="@+id/edtPassWordUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tipPassWordRegisterConfirmLO"
+        android:id="@+id/tipPassWordUpdateConfirm"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -111,18 +118,19 @@
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tipPassWordRegisterConfirm"
+            android:id="@+id/edtPassWordUpdateConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btRegister"
+        android:id="@+id/btnUpdateAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:textColor="@color/white"
         android:background="#2196F3"
-        android:text="Tạo tài khoản" />
+        android:text="CẬP NHẬT TÀI KHOẢN" />
 
 </LinearLayout>

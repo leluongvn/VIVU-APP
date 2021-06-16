@@ -6,23 +6,24 @@
     android:layout_height="match_parent"
 
     tools:context=".HomeActivity">
+
+
+
     <FrameLayout
+        android:id="@+id/frmContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/nvgHome"
-        android:id="@+id/frmContainer"/>
-
+        android:layout_above="@id/nvgHome" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nvgHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#8BC34A"
-        android:id="@+id/nvgHome"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/bottom_navigation"
         android:layout_alignParentBottom="true"
-        />
+        android:background="#8BC34A"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_navigation" />
 
 
 </RelativeLayout>
