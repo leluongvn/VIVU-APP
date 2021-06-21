@@ -52,7 +52,6 @@ public class AdapterPostDiscover extends RecyclerView.Adapter<AdapterPostDiscove
         return holder;
     }
 
-    //    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onBindViewHolder(@NonNull @NotNull AdapterPostDiscover.viewHolder holder, int position) {
         Post mPost = mPosts.get(position);

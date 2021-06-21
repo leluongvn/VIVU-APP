@@ -3,69 +3,80 @@ package com.example.vivu.models;
 import java.util.List;
 
 public class User {
-    private String userName;
-    private String emailUser;
-    private String numberPhoneUser;
-    private String passwordUser;
-    private Post postUser;
-    private String imageUser;
-
-    public String getImageUser() {
-        return imageUser;
-    }
-
-    public void setImageUser(String imageUser) {
-        this.imageUser = imageUser;
-    }
+    private String id;
+    private String username;
+    private String status;
+    private String phone;
+    private String password;
+    private String email;
+    private String image;
 
     public User() {
     }
 
-    public User(String userName, String emailUser, String numberPhoneUser, String passwordUser, String imageUser) {
-        this.userName = userName;
-        this.emailUser = emailUser;
-        this.numberPhoneUser = numberPhoneUser;
-        this.passwordUser = passwordUser;
-        this.imageUser = imageUser;
+    public User(String id, String username, String status, String phone, String password, String email, String image) {
+        this.id = id;
+        this.username = username;
+        this.status = status;
+        this.phone = phone;
+        this.password = password;
+        this.email = email;
+        this.image = image;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getId() {
+        return id;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getEmailUser() {
-        return emailUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmailUser(String emailUser) {
-        this.emailUser = emailUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getNumberPhoneUser() {
-        return numberPhoneUser;
+    public String getStatus() {
+        return status;
     }
 
-    public void setNumberPhoneUser(String numberPhoneUser) {
-        this.numberPhoneUser = numberPhoneUser;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getPasswordUser() {
-        return passwordUser;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPasswordUser(String passwordUser) {
-        this.passwordUser = passwordUser;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public Post getPostUser() {
-        return postUser;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPostUser(Post postUser) {
-        this.postUser = postUser;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

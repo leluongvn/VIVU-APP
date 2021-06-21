@@ -23,10 +23,10 @@
         app:endIconMode="clear_text"
         android:id="@+id/tipNumberPhoneLogin"
         android:layout_margin="10dp"
-        android:hint="Số điện thoại ">
+        android:hint="Email ">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:inputType="number"
+            android:inputType="textEmailAddress"
             android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:id="@+id/edtNumberPhoneLogin"/>

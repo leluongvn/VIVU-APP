@@ -14,8 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.vivu.models.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,97 +36,55 @@ public class LoginActivity extends AppCompatActivity {
     TextInputLayout mLayoutNumberPhone, mLayoutPassword;
     TextInputEditText mEditTextNumberPhone, mEditTextPassWord;
     List<User> userList = new ArrayList<>();
+    FirebaseAuth mFirebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mapping();
-        getData();
         mButtonLogin = findViewById(R.id.btnLoginHome);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mapping();
+
+
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkLogin()) {
-                    Intent intent = new Intent(LoginActivity.this,
-                            HomeActivity.class);
-                    startActivity(intent);
-                }
+                checkLogin();
             }
         });
     }
 
-    private boolean checkLogin() {
-
-        String numberPhone = mEditTextNumberPhone.getText().toString();
+    private void checkLogin() {
+        String email = mEditTextNumberPhone.getText().toString();
         String passWord = mEditTextPassWord.getText().toString();
-
-        User mUser = null;
-
-        if (numberPhone.isEmpty()) {
-            mLayoutNumberPhone.setError("Số điện thoại của bạn là gì ?");
-            return false;
+        if (email.isEmpty()) {
+            mLayoutNumberPhone.setError("Nhập email của bạn ");
+            return;
         }
-        mLayoutNumberPhone.setErrorEnabled(false);
-
-        int temp = 0;
-        for (User user : userList) {
-            if (numberPhone.trim().equals(user.getNumberPhoneUser().trim())) {
-                mUser = user;
-                temp++;
-                break;
-
-            }
-        }
-        if (temp == 0) {
-            mLayoutNumberPhone.setError("Số điện thoại bạn chưa đăng kí");
-            return false;
-        } else {
-            mLayoutNumberPhone.setEnabled(false);
-        }
-
         mLayoutNumberPhone.setErrorEnabled(false);
         if (passWord.isEmpty()) {
-            mLayoutPassword.setError("Bạn phải nhật mật khẩu");
-            return false;
+            mLayoutPassword.setError("Nhập mật khẩu của bạn");
+            return;
         }
         mLayoutPassword.setErrorEnabled(false);
-        Log.e("PASS", "" + mUser.getPasswordUser());
-        if (!passWord.trim().equals(mUser.getPasswordUser())) {
-            mLayoutPassword.setError("Bạn nhập sai mật khẩu");
-            return false;
-        }
-        SharedPreferences preferences = LoginActivity.this.getSharedPreferences("login", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("name", mUser.getUserName());
-        editor.putString("email", mUser.getEmailUser());
-        editor.putString("image",mUser.getImageUser());
-        editor.commit();
-
-
-        return true;
-    }
-
-
-    private void getData() {
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users");
-        reference.addValueEventListener(new ValueEventListener() {
+        mFirebaseAuth.signInWithEmailAndPassword(email, passWord).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    User user = snapshot1.getValue(User.class);
-                    userList.add(user);
+            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Kiểm tra lại email và mật khẩu của bạn", Toast.LENGTH_SHORT).show();
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Log.e("ERROR-GET DATA", " " + error);
             }
         });
 
+
     }
+
 
     private void mapping() {
         mLayoutNumberPhone = findViewById(R.id.tipNumberPhoneLogin);

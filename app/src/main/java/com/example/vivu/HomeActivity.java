@@ -27,11 +27,6 @@ public class HomeActivity extends AppCompatActivity {
         mNavigationView.setSelectedItemId(R.id.itemPage);
 
 
-
-
-
-        
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {

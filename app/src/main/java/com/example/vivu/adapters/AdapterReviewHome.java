@@ -64,4 +64,5 @@ public class AdapterReviewHome extends RecyclerView.Adapter<AdapterReviewHome.Vi
             mTextView = itemView.findViewById(R.id.tvReviewHome);
         }
     }
+
 }

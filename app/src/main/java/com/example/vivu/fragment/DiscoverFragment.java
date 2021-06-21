@@ -60,8 +60,9 @@ public class DiscoverFragment extends Fragment {
     Bitmap bitmapImages = null;
     String name = null;
     String email = null;
+    String imvAvatar;
     List<Post> mPostList = new ArrayList<>();
-    String imageAvatar ;
+    String imageAvatar;
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -72,11 +73,8 @@ public class DiscoverFragment extends Fragment {
         mEditTextPost = view.findViewById(R.id.edtPost);
         mRecyclerViewPost = view.findViewById(R.id.rcPostDiscover);
         mapping();
-        try {
-            mImageViewAvatar.setImageBitmap(StringToBitMap(imageAvatar));
-        }catch (Exception e){
-            Log.e("LOAD IMAGE",""+e);
-        }
+        mImageViewAvatar.setImageBitmap(StringToBitMap(imageAvatar));
+
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("post");
         reference.addValueEventListener(new ValueEventListener() {
@@ -84,7 +82,6 @@ public class DiscoverFragment extends Fragment {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Post mPost = snapshot1.getValue(Post.class);
-
                     mPostList.add(mPost);
                 }
                 mAdapterPostDiscover = new AdapterPostDiscover(mPostList, getContext());
@@ -116,6 +113,25 @@ public class DiscoverFragment extends Fragment {
         name = preferences.getString("name", null);
         email = preferences.getString("email", null);
         imageAvatar = preferences.getString("image",null);
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users");
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+//                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+//                    User mUser = snapshot.getValue(User.class);
+//                    if (mUser.getEmailUser().equals(email)) {
+//                        name = mUser.getUserName();
+//                        imageAvatar = mUser.getImageUser();
+//                        break;
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+//
+//            }
+//        });
 
 
     }
@@ -132,6 +148,7 @@ public class DiscoverFragment extends Fragment {
         TextView mTextViewAddPost = sheetDialog.findViewById(R.id.tvPost);
         sheetDialog.show();
         mTextViewName.setText(name);
+        mImageViewAvatar.setImageBitmap(StringToBitMap(imageAvatar));
         mButtonAddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,7 +166,7 @@ public class DiscoverFragment extends Fragment {
                     mEditTextDetail.setHintTextColor(getResources().getColor(R.color.red));
                     return;
                 }
-                if (bitmapImages == null){
+                if (bitmapImages == null) {
                     Toast.makeText(getContext(), "Bạn nên thêm ảnh vào bài biết ",
                             Toast.LENGTH_SHORT).show();
                     return;
@@ -157,7 +174,7 @@ public class DiscoverFragment extends Fragment {
 
 
                 try {
-                    Post post = new Post(detail, name, email, BitMapToString(bitmapImages),imageAvatar);
+                    Post post = new Post(detail, name, email, BitMapToString(bitmapImages), imageAvatar);
                     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
                     DatabaseReference reference = mDatabase.getReference("post");
                     reference.push().setValue(post);
@@ -199,6 +216,7 @@ public class DiscoverFragment extends Fragment {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
     private Bitmap StringToBitMap(String encodedString) {
         try {
             byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);

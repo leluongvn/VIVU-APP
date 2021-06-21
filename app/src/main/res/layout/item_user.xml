@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_gravity="center"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/account"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        app:shapeAppearance="@style/avatar"
+        android:scaleType="fitXY"
+        android:id="@+id/imvAvatarItemUser"/>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+    android:id="@+id/tvItemUser"
+        android:text="Le Luong"
+        android:gravity="center"/>
+
+</LinearLayout>

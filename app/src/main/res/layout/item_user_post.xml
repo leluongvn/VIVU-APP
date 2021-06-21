@@ -21,6 +21,7 @@
                 android:id="@+id/imvAvatarUserPost"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:scaleType="fitXY"
                 android:layout_margin="5dp"
                 android:src="@drawable/images"
                 app:shapeAppearance="@style/avatar" />

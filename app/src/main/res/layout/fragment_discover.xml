@@ -38,6 +38,7 @@
             android:id="@+id/imvAvatarDiscover"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:scaleType="fitXY"
             android:layout_margin="10dp"
             android:src="@drawable/images"
             app:shapeAppearance="@style/avatar" />
